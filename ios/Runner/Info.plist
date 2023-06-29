@@ -51,10 +51,9 @@
 	<array>
 	<dict>
 		<key>CFBundleURLName</key>
-		<string></string>
+		<string>example.com</string>
 		<key>CFBundleURLSchemes</key>
 		<array>
-		<!-- Add your custom URL scheme here -->
 		<string>myapp</string>
 		</array>
 	</dict>
