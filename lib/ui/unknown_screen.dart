@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 
 class UnknownScreen extends StatelessWidget {
-  final String? name;
-  const UnknownScreen(this.name, {Key? key}) : super(key: key);
+  const UnknownScreen({
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text("Неизвестный экран: $name"),
+    return Scaffold(
+      appBar: AppBar(title: const Text('Страница не найдена')),
+      body: const Center(
+        child: Text("404"),
+      ),
     );
   }
 }

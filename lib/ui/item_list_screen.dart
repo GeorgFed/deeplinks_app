@@ -4,7 +4,14 @@ import 'package:flutter/material.dart';
 class ItemListScreen extends StatelessWidget {
   final items = ItemsRepository.getItems();
 
-  ItemListScreen({super.key});
+  final void Function() onTapCart;
+  final void Function(String itemId) onItemTap;
+
+  ItemListScreen({
+    required this.onTapCart,
+    required this.onItemTap,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -14,9 +21,7 @@ class ItemListScreen extends StatelessWidget {
         actions: [
           IconButton(
             icon: const Icon(Icons.shopping_cart),
-            onPressed: () {
-              Navigator.pushNamed(context, '/cart');
-            },
+            onPressed: onTapCart,
           ),
         ],
       ),
@@ -25,13 +30,7 @@ class ItemListScreen extends StatelessWidget {
         itemBuilder: (context, index) {
           final item = items[index];
           return GestureDetector(
-            onTap: () {
-              Navigator.pushNamed(
-                context,
-                '/item',
-                arguments: item.id,
-              );
-            },
+            onTap: () => onItemTap(item.id),
             child: Container(
               height: 100,
               margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
